@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LicenseController">
+    <TableView fx:id="licenseTable" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="400.0">
+        <columns>
+            <TableColumn fx:id="applicationIdColumn" text="Application ID" />
+            <TableColumn fx:id="licenseIdColumn" text="License ID" />
+            <TableColumn fx:id="licenseClassColumn" text="License Class" />
+            <TableColumn fx:id="validityPeriodColumn" text="Validity Period" />
+        </columns>
+    </TableView>
+</AnchorPane>

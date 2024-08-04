@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="419.0" prefWidth="488.0" spacing="10" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewApplicationController">
+    <TabPane>
+        <tabs>
+            <Tab closable="false" text="Application Info">
+                <VBox spacing="10">
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="446.0" style="-fx-font-size: 18px; -fx-text-fill: red;" text="New Local Driving License Application" textAlignment="CENTER" />
+                    
+                    <GridPane alignment="CENTER" hgap="10" vgap="10">
+                        <Label text="Code License :" GridPane.columnIndex="1" />
+                        <TextField fx:id="applicationIdField" disable="true" editable="false" GridPane.columnIndex="2" />
+                        
+                        <Label text="Carte Identite :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="userIdComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        
+                        <Label text="Application Date:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="applicationDatePicker" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        
+                        <Label text="License Class:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ComboBox fx:id="licenseClassComboBox" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        
+                        <Label text="Application Fees:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="applicationFeesField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        
+                        <Label text="Chef Guided by:" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="guidedByComboBox" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        
+                        <ImageView fitHeight="34.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@imgs/lock.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="68.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                            <image>
+                                <Image url="@imgs/identity.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="68.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                            <image>
+                                <Image url="@imgs/date.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="68.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                            <image>
+                                <Image url="@imgs/class.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="68.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                            <image>
+                                <Image url="@imgs/money.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="68.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
+                            <image>
+                                <Image url="@imgs/admin.png" />
+                            </image>
+                        </ImageView>
+                        
+                        <columnConstraints>
+                            <ColumnConstraints />
+                            <ColumnConstraints />
+                            <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                        </rowConstraints>
+                    </GridPane>
+                </VBox>
+            </Tab>
+            <Tab closable="false" text="Personal Info">
+                <VBox alignment="CENTER" prefHeight="271.0" prefWidth="302.0" spacing="10">
+                    <GridPane alignment="CENTER" hgap="10" vgap="10">
+                        <Label text="First Name:" />
+                        <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
+                        
+                        <Label text="Last Name:" GridPane.rowIndex="1" />
+                        <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        
+                        <Label text="Date of Birth:" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="dobDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        
+                        <Label text="Address:" GridPane.rowIndex="3" />
+                        <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        
+                        <Label text="Phone Number:" GridPane.rowIndex="4" />
+                        <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        
+                        <Label text="Carte Identite:" GridPane.rowIndex="5" />
+                        <TextField fx:id="carteIdentiteField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        
+                        <columnConstraints>
+                            <ColumnConstraints />
+                            <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                        </rowConstraints>
+                    </GridPane>
+                    <ImageView fitHeight="34.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#handlePushPersonalInfo">
+                        <image>
+                            <Image url="@imgs/add.png" />
+                        </image>
+                    </ImageView>
+                </VBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+    
+    <HBox alignment="BOTTOM_RIGHT" spacing="10">
+        <!-- <Button onAction="#handleClose" text="Close" /> -->
+        <Button onAction="#handleSubmitApplication" text="Save" />
+    </HBox>
+</VBox>

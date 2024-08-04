@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="685.0" prefWidth="846.0" spacing="10" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminController">
+    <MenuBar>
+        <Menu text="Administration">
+            <MenuItem onAction="#handleEmployees" text="Employees" />
+        </Menu>
+    </MenuBar>
+    
+    <HBox spacing="10">
+        <ImageView fx:id="reloadImageView" fitHeight="42.0" fitWidth="31.0" onMouseClicked="#handleReload" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@imgs/reload.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="filterField" onKeyReleased="#handleFilter" promptText="Filter By" />
+    </HBox>
+    
+    <Label fx:id="notificationLabel" style="-fx-text-fill: green;" text="" />
+    
+    <TabPane VBox.vgrow="ALWAYS">
+        <Tab closable="false" text="Applications">
+            <TableView fx:id="applicationsTable">
+                <columns>
+                    <TableColumn fx:id="applicationIdColumn" text="Application ID" />
+                    <TableColumn fx:id="userIdColumn" text="User ID" />
+                    <TableColumn fx:id="licenseTypeIdColumn" text="License Type ID" />
+                    <TableColumn fx:id="applicationDateColumn" text="Application Date" />
+                    <TableColumn fx:id="createdByColumn" text="Chef Guided By" />
+                    <TableColumn fx:id="applicationFeesColumn" prefWidth="90.4000244140625" text="Application Fees" />
+                    <TableColumn fx:id="statusColumn" prefWidth="81.5999755859375" text="Status" />
+                    <TableColumn fx:id="modifyColumn" prefWidth="110.4000244140625" text="Modify" />
+                    <TableColumn fx:id="licenseColumn" prefWidth="108.7999267578125" text="License" />
+                </columns>
+            </TableView>
+        </Tab>
+        <Tab closable="false" text="License History">
+            <VBox spacing="10">
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Person ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="personIdField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label text="National ID:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <TextField fx:id="nationalIdField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+                <TableView fx:id="licenseHistoryTable">
+                    <columns>
+                        <TableColumn fx:id="historyLicenseTypeColumn" text="License Type" />
+                        <TableColumn fx:id="issueDateColumn" text="Issue Date" />
+                        <TableColumn fx:id="expiryDateColumn" text="Expiry Date" />
+                        <TableColumn fx:id="historyStatusColumn" text="Status" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+    
+    <HBox alignment="BOTTOM_RIGHT">
+        <Button onAction="#handleScheduleTest" text="Schedule Test" />
+        <Button onAction="#handleNewApplication" text="New Application" />
+        <Button onAction="#handleClose" text="Close" />
+    </HBox>
+</VBox>
