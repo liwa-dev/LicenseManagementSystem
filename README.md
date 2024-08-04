@@ -16,7 +16,7 @@ This project is a Java-based application for managing licenses. It includes func
 ## Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/LicenseManagementSystem.git
+   git clone https://github.com/liwa-dev/LicenseManagementSystem.git
    ```
 2. Open the project in your preferred IDE.
 3. Set up the database connection in `DatabaseConnection.java`.
