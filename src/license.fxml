@@ -63,5 +63,5 @@
             <Label fx:id="cinLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         </children>
     </GridPane>
-    <Button id="logout" layoutX="651.0" layoutY="253.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Disconnect" onAction="#handleLogout" />
+    <Button fx:id="logoutButton" layoutX="651.0" layoutY="253.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Disconnect" onAction="#handleLogout" />
 </AnchorPane>
