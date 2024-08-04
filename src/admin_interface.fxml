@@ -42,7 +42,6 @@
                 <columns>
                     <TableColumn fx:id="applicationIdColumn" text="Application ID" />
                     <TableColumn fx:id="userIdColumn" text="User ID" />
-                    <TableColumn fx:id="licenseTypeIdColumn" text="License Type ID" />
                     <TableColumn fx:id="applicationDateColumn" text="Application Date" />
                     <TableColumn fx:id="createdByColumn" text="Chef Guided By" />
                     <TableColumn fx:id="applicationFeesColumn" prefWidth="90.4000244140625" text="Application Fees" />

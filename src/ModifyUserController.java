@@ -26,7 +26,7 @@ public class ModifyUserController {
     @FXML private TextField countryField;
     @FXML private TextField payment;
     @FXML private CheckBox statusCheckBox;
-    @FXML private ComboBox<String> licenseClassComboBox;
+    // @FXML private ComboBox<String> licenseClassComboBox;
 
     private Connection conn;
     private int currentUserId;
@@ -47,34 +47,33 @@ public class ModifyUserController {
         }
 
         // Load LicenseClass values into licenseClassComboBox
-        loadLicenseClasses();
+        // loadLicenseClasses();
     }
 
-    private void loadLicenseClasses() {
-        String query = "SELECT LicenseClass FROM license_types";
-        ObservableList<String> licenseClasses = FXCollections.observableArrayList();
+    // private void loadLicenseClasses() {
+    //     String query = "SELECT LicenseClass FROM license_types";
+    //     ObservableList<String> licenseClasses = FXCollections.observableArrayList();
 
-        try (PreparedStatement pstmt = conn.prepareStatement(query);
-             ResultSet rs = pstmt.executeQuery()) {
+    //     try (PreparedStatement pstmt = conn.prepareStatement(query);
+    //          ResultSet rs = pstmt.executeQuery()) {
 
-            while (rs.next()) {
-                licenseClasses.add(rs.getString("LicenseClass"));
-            }
+    //         while (rs.next()) {
+    //             licenseClasses.add(rs.getString("LicenseClass"));
+    //         }
 
-            licenseClassComboBox.setItems(licenseClasses);
+    //         licenseClassComboBox.setItems(licenseClasses);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            showAlert("Error", "Failed to load license classes: " + e.getMessage());
-        }
-    }
+    //     } catch (SQLException e) {
+    //         e.printStackTrace();
+    //         showAlert("Error", "Failed to load license classes: " + e.getMessage());
+    //     }
+    // }
 
     public void loadUserData(int userId, int applicationId) {
         currentUserId = userId;
         currentApplicationId = applicationId;
         String userQuery = "SELECT * FROM users WHERE UserID = ?";
         String applicationQuery = "SELECT * FROM applications WHERE ApplicationID = ?";
-        String licenseTypeQuery = "SELECT LicenseClass FROM license_types WHERE LicenseTypeID = ?";
 
         try (PreparedStatement userPstmt = conn.prepareStatement(userQuery);
              PreparedStatement applicationPstmt = conn.prepareStatement(applicationQuery)) {
@@ -101,14 +100,7 @@ public class ModifyUserController {
                 payment.setText(applicationRs.getString("ApplicationFees")); 
                 statusCheckBox.setSelected(applicationRs.getInt("STATUS") == 1);
 
-                int licenseTypeId = applicationRs.getInt("LicenseTypeID");
-                try (PreparedStatement licenseTypePstmt = conn.prepareStatement(licenseTypeQuery)) {
-                    licenseTypePstmt.setInt(1, licenseTypeId);
-                    ResultSet licenseTypeRs = licenseTypePstmt.executeQuery();
-                    if (licenseTypeRs.next()) {
-                        licenseClassComboBox.setValue(licenseTypeRs.getString("LicenseClass"));
-                    }
-                }
+
             }
 
         } catch (SQLException e) {

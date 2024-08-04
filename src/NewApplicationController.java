@@ -25,8 +25,8 @@ public class NewApplicationController {
     @FXML
     private DatePicker applicationDatePicker;
 
-    @FXML
-    private ComboBox<String> licenseClassComboBox;
+    // @FXML
+    // private ComboBox<String> licenseClassComboBox;
 
     @FXML
     private TextField applicationFeesField;
@@ -66,7 +66,7 @@ public class NewApplicationController {
         fetchEmployeeData();
 
         // Fetch license types and populate the licenseClassComboBox
-        fetchLicenseTypesData();
+        // fetchLicenseTypesData();
 
         // Add event handler to userIdComboBox to refresh data when clicked
         userIdComboBox.setOnMouseClicked(event -> fetchUserIdData());
@@ -97,23 +97,23 @@ public class NewApplicationController {
     }
 
   
-    private void fetchLicenseTypesData() {
-        licenseClassComboBox.getItems().clear();
-        licenseClassToIdMap.clear();
-        try (Connection connection = DatabaseConnection.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT LicenseTypeID, LicenseClass FROM license_types")) {
+    // private void fetchLicenseTypesData() {
+    //     licenseClassComboBox.getItems().clear();
+    //     licenseClassToIdMap.clear();
+    //     try (Connection connection = DatabaseConnection.getConnection();
+    //          Statement statement = connection.createStatement();
+    //          ResultSet resultSet = statement.executeQuery("SELECT LicenseTypeID, LicenseClass FROM license_types")) {
 
-            while (resultSet.next()) {
-                int licenseTypeId = resultSet.getInt("LicenseTypeID");
-                String licenseClass = resultSet.getString("LicenseClass");
-                licenseClassComboBox.getItems().add(licenseClass);
-                licenseClassToIdMap.put(licenseClass, licenseTypeId);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    //         while (resultSet.next()) {
+    //             int licenseTypeId = resultSet.getInt("LicenseTypeID");
+    //             String licenseClass = resultSet.getString("LicenseClass");
+    //             licenseClassComboBox.getItems().add(licenseClass);
+    //             licenseClassToIdMap.put(licenseClass, licenseTypeId);
+    //         }
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 
     private void fetchUserIdData() {
         carteIdentiteToUserIdMap.clear();
@@ -146,12 +146,13 @@ public class NewApplicationController {
         String selectedCarteIdentite = userIdComboBox.getValue();
         Integer userId = carteIdentiteToUserIdMap.get(selectedCarteIdentite);
         LocalDate applicationDate = applicationDatePicker.getValue();
-        String selectedLicenseClass = licenseClassComboBox.getValue();
-        Integer licenseTypeId = licenseClassToIdMap.get(selectedLicenseClass);
+        // String selectedLicenseClass = licenseClassComboBox.getValue();
+        // Integer licenseTypeId = licenseClassToIdMap.get(selectedLicenseClass);
         String applicationFees = applicationFeesField.getText();
 
         if (applicationId.isEmpty() || selectedCarteIdentite == null || applicationDate == null || 
-            selectedLicenseClass == null || applicationFees.isEmpty() || guidedByComboBox.getValue() == null) {
+            // selectedLicenseClass == null || 
+            applicationFees.isEmpty() || guidedByComboBox.getValue() == null) {
             showAlert("Error", "All fields must be filled out.", Alert.AlertType.ERROR);
             return;
         }
@@ -160,7 +161,7 @@ public class NewApplicationController {
         System.out.println("Application ID: " + applicationId);
         System.out.println("User ID: " + userId);
         System.out.println("Application Date: " + applicationDate);
-        System.out.println("License Type ID: " + licenseTypeId);
+        // System.out.println("License Type ID: " + licenseTypeId);
         System.out.println("Application Fees: " + applicationFees);
         System.out.println("Chef Guided By: " + guidedByComboBox.getValue());
 
@@ -169,7 +170,7 @@ public class NewApplicationController {
                  "INSERT INTO applications (UserID, LicenseTypeID, ApplicationDate, CreatedBy, ApplicationFees) VALUES (?, ?, ?, ?, ?)")) {
 
             preparedStatement.setInt(1, userId);
-            preparedStatement.setInt(2, licenseTypeId);
+            // preparedStatement.setInt(2, licenseTypeId);
             preparedStatement.setDate(3, java.sql.Date.valueOf(applicationDate));
             preparedStatement.setString(4, guidedByComboBox.getValue());
             preparedStatement.setBigDecimal(5, new java.math.BigDecimal(applicationFees));

@@ -68,11 +68,11 @@
                             <Label text="Status:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                             <CheckBox fx:id="statusCheckBox" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                             
-                            <Label text="LicenseClass:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                            <ComboBox fx:id="licenseClassComboBox" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                            <!-- <Label text="LicenseClass:" GridPane.columnIndex="2" GridPane.rowIndex="4" /> -->
+                            <!-- <ComboBox fx:id="licenseClassComboBox" GridPane.columnIndex="3" GridPane.rowIndex="4" /> -->
                             
-                            <Label text="Payment:" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                            <TextField fx:id="payment" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                            <Label text="Payment:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                            <TextField fx:id="payment" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                         </children>
                         <rowConstraints>
                             <RowConstraints />
@@ -86,6 +86,6 @@
                 </content>
             </TitledPane>
         </HBox>
-        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="SAVE" onAction="#handleSave" />
+        <Button mnemonicParsing="false" onAction="#handleSave" prefHeight="30.0" prefWidth="87.0" text="SAVE" />
     </children>
 </VBox>

@@ -43,7 +43,6 @@ public class AdminController {
     @FXML private TableView<Application> applicationsTable;
     @FXML private TableColumn<Application, Integer> applicationIdColumn;
     @FXML private TableColumn<Application, Integer> userIdColumn;
-    @FXML private TableColumn<Application, Integer> licenseTypeIdColumn;
     @FXML private TableColumn<Application, LocalDate> applicationDateColumn;
     @FXML private TableColumn<Application, String> createdByColumn;
     @FXML private TableColumn<Application, Double> applicationFeesColumn;
@@ -58,7 +57,6 @@ public class AdminController {
     private void initialize() {
         applicationIdColumn.setCellValueFactory(new PropertyValueFactory<>("applicationId"));
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
-        licenseTypeIdColumn.setCellValueFactory(new PropertyValueFactory<>("licenseTypeId"));
         applicationDateColumn.setCellValueFactory(new PropertyValueFactory<>("applicationDate"));
         createdByColumn.setCellValueFactory(new PropertyValueFactory<>("createdBy"));
         applicationFeesColumn.setCellValueFactory(new PropertyValueFactory<>("applicationFees"));
@@ -108,8 +106,6 @@ public class AdminController {
             if (String.valueOf(application.getApplicationId()).toLowerCase().contains(filterText)) {
                 return true;
             } else if (String.valueOf(application.getUserId()).toLowerCase().contains(filterText)) {
-                return true;
-            } else if (String.valueOf(application.getLicenseTypeId()).toLowerCase().contains(filterText)) {
                 return true;
             } else if (application.getApplicationDate().toString().toLowerCase().contains(filterText)) {
                 return true;
@@ -219,7 +215,7 @@ public class AdminController {
 
     private void loadApplicationData() {
         applicationData.clear();
-        String query = "SELECT ApplicationID, UserID, LicenseTypeID, ApplicationDate, CreatedBy, ApplicationFees, Status FROM applications";
+        String query = "SELECT ApplicationID, UserID, ApplicationDate, CreatedBy, ApplicationFees, Status FROM applications";
         
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
@@ -229,7 +225,6 @@ public class AdminController {
                 applicationData.add(new Application(
                     rs.getInt("ApplicationID"),
                     rs.getInt("UserID"),
-                    rs.getInt("LicenseTypeID"),
                     rs.getDate("ApplicationDate").toLocalDate(),
                     rs.getString("CreatedBy"),
                     rs.getDouble("ApplicationFees"),
