@@ -67,6 +67,7 @@ The Driving License Application System is designed to streamline the process of 
 
 ## Project Structure
 
+`
 ├── src/
 │   ├── AdminController.java
 │   ├── ControllerClass.java
@@ -83,6 +84,7 @@ The Driving License Application System is designed to streamline the process of 
 │       ├── user.png
 │       ├── veh.png
 │       └── reload.png
+`
 
 
 ### Main Components
