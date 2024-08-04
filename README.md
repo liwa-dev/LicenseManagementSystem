@@ -104,14 +104,18 @@ The Driving License Application System is designed to streamline the process of 
 
 ## Screenshots
 
-### User Interface
-![User Interface](src/imgs/user_interface.png)
+### Main Interface
+![User Interface](src/imgs/main.png)
 
 ### Admin Interface
-![Admin Interface](src/imgs/admin_interface.png)
+![Admin Interface](src/imgs/admin.png)
+
+### User Interface
+![User Interface](src/imgs/user.png)
 
 ### Application Submission
-![Application Submission](src/imgs/application_submission.png)
+![Application Submission](src/imgs/app_submission.png)
+
 
 ## License
 
