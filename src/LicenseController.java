@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -15,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 public class LicenseController {
 
@@ -42,6 +46,8 @@ public class LicenseController {
     private Label addressLabel;
     @FXML
     private Label cinLabel;
+    @FXML
+    private Button logoutButton; // Added this line
 
     private int userId;
 
@@ -136,8 +142,18 @@ public class LicenseController {
 
     @FXML
     private void handleLogout() {
-        // Implement logout logic here, e.g., navigate to login screen
-        System.out.println("User logged out");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(new Scene(loader.load(), 600, 400));
+            stage.setTitle("Application License");
+            // Disable resizing
+            stage.setResizable(false);
+            stage.centerOnScreen(); // Center the stage on the screen
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static class LicenseData {
