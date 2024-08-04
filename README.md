@@ -67,7 +67,21 @@ The Driving License Application System is designed to streamline the process of 
 
 ## Project Structure
 
-└──
+├── AdminController.java
+├── ControllerClass.java
+├── DatabaseConnection.java
+├── LicenseController.java
+├── NewApplicationController.java
+├── NewLicenseController.java
+├── interface.fxml
+├── license.fxml
+├── new_application.fxml
+├── new_license.fxml
+├── admin_interface.fxml
+└── imgs/
+├── user.png
+├── veh.png
+└── reload.png
 
 
 
