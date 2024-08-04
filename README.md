@@ -114,7 +114,10 @@ The Driving License Application System is designed to streamline the process of 
 ![User Interface](src/imgs/user.png)
 
 ### Application Submission
-![Application Submission](src/imgs/app_submission.png)
+![Application Submission](src/imgs/app_sub.png)
+
+### License Submission
+![Application Submission](src/imgs/license_sub.png)
 
 
 ## License
