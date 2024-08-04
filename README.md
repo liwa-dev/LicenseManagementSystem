@@ -28,7 +28,7 @@ The Driving License Application System is designed to streamline the process of 
 ### Prerequisites
 
 - Java Development Kit (JDK) 17 or higher
-- MySQL database
+- MySQL database(
 
 ### Installation
 
@@ -66,3 +66,37 @@ The Driving License Application System is designed to streamline the process of 
 2. **Manage Users**: Admins can view and update user information.
 
 ## Project Structure
+
+└──
+
+
+
+### Main Components
+
+- **AdminController.java**: Handles admin-specific functionalities.
+- **ControllerClass.java**: Manages the main application logic and user interactions.
+- **DatabaseConnection.java**: Manages database connections and queries.
+- **LicenseController.java**: Displays license data and handles user interactions related to licenses.
+- **NewApplicationController.java**: Manages the submission of new applications.
+
+### FXML Files
+
+- **interface.fxml**: Main interface layout.
+- **license.fxml**: Layout for displaying license data.
+- **new_application.fxml**: Layout for submitting new applications.
+- **new_license.fxml**: Layout for managing new licenses.
+
+## Screenshots
+
+### User Interface
+![User Interface](src/imgs/user_interface.png)
+
+### Admin Interface
+![Admin Interface](src/imgs/admin_interface.png)
+
+### Application Submission
+![Application Submission](src/imgs/application_submission.png)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
