@@ -28,7 +28,7 @@ The Driving License Application System is designed to streamline the process of 
 ### Prerequisites
 
 - Java Development Kit (JDK) 17 or higher
-- MySQL database(
+- MySQL database ( 8.0.39 )
 
 ### Installation
 
