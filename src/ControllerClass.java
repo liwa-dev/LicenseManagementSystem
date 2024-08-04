@@ -54,6 +54,12 @@ public class ControllerClass {
         String username = adminUsernameField.getText();
         String password = adminPasswordField.getText();
 
+        // Check for empty fields
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Error", "Username and password must not be empty.", Alert.AlertType.ERROR);
+            return;
+        }
+
         // Validate credentials against the database
         if (DatabaseConnection.validateAdminCredentials(username, password)) {
             try {
@@ -71,7 +77,7 @@ public class ControllerClass {
             }
         } else {
             // Handle invalid login
-            System.out.println("Invalid admin credentials");
+            showAlert("Error", "Invalid admin credentials.", Alert.AlertType.ERROR);
         }
     }
 

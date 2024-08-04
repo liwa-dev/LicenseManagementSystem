@@ -284,10 +284,6 @@ public class AdminController {
         System.out.println("International License Application");
     }
 
-    @FXML
-    private void handleScheduleTest() {
-        System.out.println("Schedule Test");
-    }
 
     @FXML
     private void handleNewApplication() {
@@ -322,8 +318,18 @@ public class AdminController {
     }
 
     @FXML
-    private void handleClose() {
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
+    private void handleDisconnect() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.setScene(new Scene(loader.load(), 600, 400));
+            stage.setTitle("Application License");
+            // Disable resizing
+            stage.setResizable(false);
+            stage.centerOnScreen(); // Center the stage on the screen
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

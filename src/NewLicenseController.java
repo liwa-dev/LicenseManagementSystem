@@ -33,7 +33,7 @@ public class NewLicenseController {
     @FXML private TableColumn<ObservableList<String>, String> expiryDateColumn;
     @FXML private TableColumn<ObservableList<String>, String> statusColumn;
 
-    private int applicationId;
+    private int applicationId; // Field to store applicationId
     private ObservableList<ObservableList<String>> licensesData = FXCollections.observableArrayList();
 
     @FXML
@@ -67,8 +67,10 @@ public class NewLicenseController {
                     setText(item);
                     if (item.equals("Active")) {
                         circle.setFill(Color.GREEN);
+                        setText("Approved");
                     } else if (item.equals("Expired")) {
                         circle.setFill(Color.RED);
+                        setText("License expired!");
                     } else if (item.equals("Pending")) {
                         circle.setFill(Color.YELLOW);
                     } else {
@@ -137,17 +139,11 @@ public class NewLicenseController {
         System.out.println(licenseType);
         LocalDate startDate = startDateField.getValue();
         LocalDate expiryDate = expiryDateField.getValue();
-        // LocalDate currentDate = LocalDate.now();
 
         if (licenseType == null || startDate == null || expiryDate == null) {
             showAlert("Error", "License type, start date, and expiry date must all be filled out.");
             return;
         }
-
-        // if (startDate.isBefore(currentDate)) {
-        //     showAlert("Error", "Start date cannot be in the past.");
-        //     return;
-        // }
 
         if (expiryDate.isBefore(startDate.plusWeeks(1))) {
             showAlert("Error", "Expiry date must be at least one week after the start date.");
@@ -196,27 +192,31 @@ public class NewLicenseController {
 
     private void loadLicenses() {
         licensesData.clear();
-        String query = "SELECT l.LicenseID, lt.LicenseClass, lt.ValidityPeriod, l.StartDate, l.ExpiryDate, l.LicenseTypeID " +
-                       "FROM LICENSES l " +
-                       "JOIN APPLICATIONS a ON l.ApplicationID = a.ApplicationID " +
-                       "JOIN license_types lt ON l.LicenseTypeID = lt.LicenseTypeID";
+        String query = "SELECT LicenseID, lt.LicenseClass, lt.ValidityPeriod, l.StartDate, l.ExpiryDate, a.Status " +
+                       "FROM licenses as l " +
+                       "JOIN applications as a ON a.ApplicationID = l.ApplicationID " +
+                       "JOIN license_types as lt ON lt.LicenseTypeID = l.LicenseTypeID " +
+                       "WHERE l.ApplicationID = ?"; // Use applicationId in the query
+
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(query);
-             ResultSet rs = pstmt.executeQuery()) {
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, applicationId); // Set the applicationId parameter
+            ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 ObservableList<String> row = FXCollections.observableArrayList();
                 row.add(rs.getString("LicenseID"));
                 row.add(rs.getString("LicenseClass"));
                 row.add(rs.getString("ValidityPeriod"));
-                
+
                 LocalDate startDate = rs.getDate("StartDate").toLocalDate();
                 LocalDate expiryDate = rs.getDate("ExpiryDate").toLocalDate();
                 LocalDate currentDate = LocalDate.now();
-                
+
                 row.add(startDate.toString());
                 row.add(expiryDate.toString());
-                
+
                 // Determine the status
                 String status;
                 if (currentDate.isBefore(startDate)) {
