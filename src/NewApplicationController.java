@@ -55,7 +55,6 @@ public class NewApplicationController {
 
     private Map<String, Integer> carteIdentiteToUserIdMap = new HashMap<>();
     private Map<String, String> carteIdentiteToCodeLicenseMap = new HashMap<>();
-    private Map<String, Integer> licenseClassToIdMap = new HashMap<>();
 
     @FXML
     private void initialize() {
@@ -95,25 +94,6 @@ public class NewApplicationController {
             e.printStackTrace();
         }
     }
-
-  
-    // private void fetchLicenseTypesData() {
-    //     licenseClassComboBox.getItems().clear();
-    //     licenseClassToIdMap.clear();
-    //     try (Connection connection = DatabaseConnection.getConnection();
-    //          Statement statement = connection.createStatement();
-    //          ResultSet resultSet = statement.executeQuery("SELECT LicenseTypeID, LicenseClass FROM license_types")) {
-
-    //         while (resultSet.next()) {
-    //             int licenseTypeId = resultSet.getInt("LicenseTypeID");
-    //             String licenseClass = resultSet.getString("LicenseClass");
-    //             licenseClassComboBox.getItems().add(licenseClass);
-    //             licenseClassToIdMap.put(licenseClass, licenseTypeId);
-    //         }
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    // }
 
     private void fetchUserIdData() {
         carteIdentiteToUserIdMap.clear();
@@ -167,13 +147,12 @@ public class NewApplicationController {
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                 "INSERT INTO applications (UserID, LicenseTypeID, ApplicationDate, CreatedBy, ApplicationFees) VALUES (?, ?, ?, ?, ?)")) {
+                 "INSERT INTO applications (UserID, ApplicationDate, CreatedBy, ApplicationFees) VALUES (?, ?, ?, ?)")) {
 
             preparedStatement.setInt(1, userId);
-            // preparedStatement.setInt(2, licenseTypeId);
-            preparedStatement.setDate(3, java.sql.Date.valueOf(applicationDate));
-            preparedStatement.setString(4, guidedByComboBox.getValue());
-            preparedStatement.setBigDecimal(5, new java.math.BigDecimal(applicationFees));
+            preparedStatement.setDate(2, java.sql.Date.valueOf(applicationDate));
+            preparedStatement.setString(3, guidedByComboBox.getValue());
+            preparedStatement.setBigDecimal(4, new java.math.BigDecimal(applicationFees));
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
