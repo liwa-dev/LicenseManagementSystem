@@ -34,8 +34,8 @@ The Driving License Application System is designed to streamline the process of 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/yourrepository.git
-    cd yourrepository
+    git clone https://github.com/liwa-dev/LicenseManagementSystem.git
+    cd LicenseManagementSystem
     ```
 
 2. Set up the MySQL database:
